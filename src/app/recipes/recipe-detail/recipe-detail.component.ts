@@ -6,6 +6,7 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit {
+  //used the Inpute decorator to pass through data from the other components
 @Input() recipe: Recipe;
   constructor() { }
 
