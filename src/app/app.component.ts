@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+loadedFeature = 'recipe';
+//changes the state of the deufalt page that is loaded at start
+  onNavigate(feature: string){
+    this.loadedFeature = feature;
 
+  }
 }
