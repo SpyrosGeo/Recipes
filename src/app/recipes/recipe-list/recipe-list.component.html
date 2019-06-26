@@ -10,7 +10,6 @@
 <!-- bound to [recipe ] reffering to the recipe property on recipe-list
  and bind the current recipe using the recipeEl -->
     <app-recipe-item *ngFor="let recipeEl of recipes"
-    [recipe]="recipeEl"
-    (recipeSelected)="onRecipeSelected(recipeEl)"></app-recipe-item>
+    [recipe]="recipeEl"></app-recipe-item>
   </div>
 </div>

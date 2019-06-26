@@ -2,7 +2,7 @@
   <div class="col-md-5">
     <!-- added an eventlistener for passing the data of which recipe was clicked and
     store it in the selectedRecipe -->
-<app-recipe-list (recipeWasSelected)="selectedRecipe = $event"></app-recipe-list>
+<app-recipe-list></app-recipe-list>
   </div>
   <div class="col-md-7">
 <app-recipe-detail *ngIf="selectedRecipe; else infoText"
