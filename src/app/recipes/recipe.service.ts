@@ -1,9 +1,10 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter,Injectable } from '@angular/core';
 
 import { Recipe } from "./recipe.model";
 import { Ingredient }from '../shared/ingredient.model';
+import { ShoppingListService }from '../shopping-list/shopping-list.service';
 
-
+@Injectable()
 export class RecipeService {
 recipeSelected = new EventEmitter<Recipe>();
   private recipes: Recipe[] = [
@@ -17,8 +18,12 @@ recipeSelected = new EventEmitter<Recipe>();
       new Ingredient('wheat',3)
     ])
   ];
+  constructor(private slService:ShoppingListService){}
   getRecipes(){
     //we use slice with no arguments so we cant access the recipes at all
     return this.recipes.slice();
+  }
+  addIngredientsToShoppingList(ingredients: Ingredient[]){
+    this.slService.addIngredients(ingredients);
   }
 }
