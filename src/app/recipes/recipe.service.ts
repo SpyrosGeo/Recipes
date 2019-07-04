@@ -23,6 +23,9 @@ recipeSelected = new EventEmitter<Recipe>();
     //we use slice with no arguments so we cant access the recipes at all
     return this.recipes.slice();
   }
+  getRecipe(index:number){
+    return this.recipes.slice()[index];
+  }
   addIngredientsToShoppingList(ingredients: Ingredient[]){
     this.slService.addIngredients(ingredients);
   }
