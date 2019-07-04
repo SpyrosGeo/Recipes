@@ -9,7 +9,7 @@
 <!-- used the ngFor to loop through every of the items on the recipe list  -->
 <!-- bound to [recipe ] reffering to the recipe property on recipe-list
  and bind the current recipe using the recipeEl -->
-    <app-recipe-item *ngFor="let recipeEl of recipes"
-    [recipe]="recipeEl"></app-recipe-item>
+    <app-recipe-item *ngFor="let recipeEl of recipes; let i = index"
+    [recipe]="recipeEl"[index]="i"></app-recipe-item>
   </div>
 </div>

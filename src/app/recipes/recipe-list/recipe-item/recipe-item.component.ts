@@ -13,6 +13,7 @@ export class RecipeItemComponent implements OnInit {
   //fetched the recipe from recipe.model using the Input decorator
   @Input() recipe: Recipe;
   //created a new event emits data when the recipe item link is clicked
+  @Input() index: number;
 
 
 
