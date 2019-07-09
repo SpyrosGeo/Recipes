@@ -1,10 +1,11 @@
-import { Ingredient } from '../shared/ingredient.model';
-import { EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 
+
+import { Ingredient } from '../shared/ingredient.model';
 
 export class ShoppingListService {
   //added a eventemitter so i dont remove the slice() and accidentaly edit the array somewhere
-  ingredientsChanged = new EventEmitter<Ingredient[]>();
+  ingredientsChanged = new Subject<Ingredient[]>();
   private ingredients:Ingredient[] = [
     new Ingredient('Apples',5),
     new Ingredient('Tomatos',10)
@@ -14,7 +15,7 @@ export class ShoppingListService {
   }
   addIngredient(ingredient:Ingredient){
     this.ingredients.push(ingredient);
-    this.ingredientsChanged.emit(this.ingredients.slice());
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
   addIngredients(ingredients:Ingredient[]){
     // for(let ingredient of ingredients){
@@ -22,6 +23,6 @@ export class ShoppingListService {
     // }
     //... is the spread operator tha converts our array to a list for push to handle . its a feature of ES6
     this.ingredients.push(...ingredients);
-    this.ingredientsChanged.emit(this.ingredients.slice());
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 }
