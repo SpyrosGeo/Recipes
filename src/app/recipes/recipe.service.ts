@@ -20,6 +20,14 @@ export class RecipeService {
     ])
   ];
   constructor(private slService:ShoppingListService){}
+
+  setRecipes(recipes:Recipe[]){
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice())
+  }
+
+
+
   getRecipes(){
     //we use slice with no arguments so we cant access the recipes at all
     return this.recipes.slice();
