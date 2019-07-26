@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 import { User } from './user.mode';
 
 export interface AuthResponseData {
@@ -21,7 +22,7 @@ export class AuthService {
 
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
 
   signUp(email: string, password: string) {
@@ -50,11 +51,33 @@ export class AuthService {
       }));
   }
 
-  logout(){
+  logout() {
     this.user.next(null);
+    this.router.navigate(["/auth"]);
   }
 
+  autoLogin() {
+    const  userData:{
+      email:string;
+      id:string;
+      _token: string;
+      _tokenExpirationDate: string;
 
+    } = JSON.parse(localStorage.getItem('userData'));
+    if (!userData){
+      return;
+    }
+    const loadedUser =
+    new User(
+      userData.email,
+      userData.id,
+      userData._token,
+      new Date(userData._tokenExpirationDate)
+    );
+    if (loadedUser.token){
+      this.user.next(loadedUser);
+    }
+  }
 
 
 
@@ -62,7 +85,11 @@ export class AuthService {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
     this.user.next(user);
+    localStorage.setItem('userData', JSON.stringify(user));
   }
+
+
+
 
   //handling errors
   private handleError(errorRes: HttpErrorResponse) {
