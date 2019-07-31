@@ -1,0 +1,19 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {RouterModule,Routes } from '@angular/router';
+import { ShoppingListComponent } from './shopping-list.component';
+
+
+const routes:Routes = [
+  {
+    path:'shopping-list',
+    component:ShoppingListComponent
+  }
+];
+@NgModule({
+  declarations: [],
+  imports: [RouterModule.forChild(routes), CommonModule ],
+  exports: [RouterModule],
+  providers: [],
+})
+export class ShoppingListRoutingModule {}
