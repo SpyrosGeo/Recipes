@@ -47,7 +47,12 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ShoppingListService,RecipeService,{provide:HTTP_INTERCEPTORS,useClass:AuthIntercepterService,multi:true}],
+  providers: [ShoppingListService,
+    RecipeService,
+    {provide:HTTP_INTERCEPTORS,
+      useClass:AuthIntercepterService,
+      multi:true}
+    ],
   bootstrap: [AppComponent],
   entryComponents:[
     AlertComponent
