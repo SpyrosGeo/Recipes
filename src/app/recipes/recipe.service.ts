@@ -22,7 +22,8 @@ export class RecipeService {
   //   ])
   // ];
   private recipes:Recipe[] = [];
-  constructor(private slService:ShoppingListService,private store:Store<fromShoppingList.AppState>){}
+  constructor(private slService:ShoppingListService,
+              private store:Store<fromShoppingList.AppState>){}
 
   setRecipes(recipes:Recipe[]){
     this.recipes = recipes;
