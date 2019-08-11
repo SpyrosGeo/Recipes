@@ -97,7 +97,7 @@ authSignup = this.actions$.pipe(
             resData.idToken)
       }),
         catchError(errorRes => {
-          return   handleError(errorRes); 
+          return   handleError(errorRes);
         })
       );
     })
@@ -105,7 +105,7 @@ authSignup = this.actions$.pipe(
   );
 
   @Effect({dispatch:false})
-  authSuccess = this.actions$.pipe(ofType(AuthActions.AUTHENTICATE_SUCCESS), tap(() => {
+  authRedirect = this.actions$.pipe(ofType(AuthActions.AUTHENTICATE_SUCCESS,AuthActions.LOGOUT), tap(() => {
     this.router.navigate(['/']);
     })
   );
